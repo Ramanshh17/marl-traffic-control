@@ -1,0 +1,29 @@
+environment:
+  name: "multi_intersection_grid"
+  num_intersections: 4
+  grid_size: [2, 2]
+  episode_length: 1000
+  delta_time: 5
+  
+observation:
+  type: "local"
+  features:
+    - queue_length
+    - waiting_time
+    - phase
+    - time_since_change
+  neighbor_info: true
+  observation_radius: 1
+    
+reward:
+  type: "weighted"
+  weights:
+    waiting_time: -1.0
+    queue_length: -0.5
+    throughput: 0.3
+  normalize: true
+
+traffic:
+  arrival_rate: 0.3
+  peak_multiplier: 1.5
+  flow_pattern: "dynamic"

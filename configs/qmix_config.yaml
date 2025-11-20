@@ -1,0 +1,32 @@
+algorithm: "QMIX"
+description: "Value decomposition with mixing network"
+
+training:
+  total_episodes: 5
+  learning_rate: 0.0005
+  batch_size: 32
+  buffer_size: 10000
+  target_update_interval: 100
+  epsilon_start: 1.0
+  epsilon_end: 0.05
+  epsilon_decay: 0.995
+  gamma: 0.99
+  tau: 0.01
+  
+network:
+  rnn_hidden_dim: 64
+  mixer_hidden_dim: 32
+  hypernet_hidden_dim: 64
+  
+evaluation:
+  eval_interval: 25
+  n_eval_episodes: 5
+  
+checkpoint:
+  save_interval: 50
+  save_path: "checkpoints/qmix/"
+  
+logging:
+  use_tensorboard: true
+  log_interval: 5
+  verbose: true
